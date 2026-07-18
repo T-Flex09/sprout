@@ -28,7 +28,7 @@ func NewBuffer(width, height int) Buffer {
 	}
 }
 
-func (buff Buffer) ToString() string {
+func (buff Buffer) ToFrame() string {
 	var sb strings.Builder
 	const SCREEN_CLEARING_BYTES int = 7
 	
@@ -50,7 +50,9 @@ func (buff Buffer) ToString() string {
 			sb.WriteByte('m')
 			sb.WriteRune(cell.Char)
 		}
-		sb.WriteByte('\n')
+		if row != buff.Height - 1 {
+			sb.WriteByte('\n')
+		}
 	}
 	
 	sb.WriteString("\x1b[0m")

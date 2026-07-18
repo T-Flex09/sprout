@@ -10,11 +10,10 @@ func RenderFrame(buffer *Buffer) {
 	if err != nil {
 		return
 	}
-
 	if buffer.Width != width || buffer.Height != height {
 		tempBuff := NewBuffer(width, height)
 		buffer = &tempBuff
 	}
 
-	os.Stdout.WriteString(buffer.ToString())
+	os.Stdout.WriteString(buffer.ToFrame())
 }
